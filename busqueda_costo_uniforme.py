@@ -46,4 +46,33 @@ def buscar_solucion_UCS(conexiones, estado_inicial, solucion):
             nodo.set_hijos(lista_hijos)
 
 if __name__ == "__main__":
-    
+    conexiones = {
+        'EDO.MEX': {'CDMX': 125, 'SLP': 513},
+        'PUEBLA': {'SLP': 514},
+        'CDMX': {'EDO.MEX': 125, 'SLP': 423, 'MICHOACAN': 491},
+        'MICHOACAN': {'CDMX': 491, 'SLP': 356, 'MONTERREY': 309, 'SONORA': 346},
+        'SLP': {'QRO': 203, 'PUEBLA': 514, 'EDO.MEX': 513, 'CDMX': 423, 'SONORA': 603, 'GUADALAJARA': 437, 'MICHOACAN': 356, 'MONTERREY': 313, 'GUADALAJARA': 437, 'HIDALGO': 599},
+        'QRO': {'HIDALGO': 390, 'SLP': 203},
+        'HIDALGO': {'QRO': 390, 'SLP': 599},
+        'GUADALAJARA': {'SLP': 437, 'MONTERREY': 394},
+        'MONTERREY': {'SONORA': 296, 'MICHOACAN': 309, 'SLP': 313},
+        'SONORA': {'MONTERREY': 296, 'SLP': 603, 'MICHOACAN': 346}
+    }
+
+    estado_inicial = 'EDO.MEX'
+    solucion = 'HIDALGO'
+
+    nodo_solucion = buscar_solucion_UCS(conexiones, estado_inicial, solucion)
+
+    # mostrar resultado
+    resultado = []
+    nodo = nodo_solucion
+
+    while nodo.get_padre() != None:
+        resultado.append(nodo.get_datos())
+        nodo = nodo.get_padre()
+
+    resultado.append(estado_inicial)
+    resultado.reverse()
+    print(resultado)
+    print('Coste: ' + str(nodo_solucion.get_coste()))
