@@ -12,3 +12,31 @@ class Nodo:
             for h in self.hijos:
                 h.padre = self
                 
+    def get_hijos(self):
+        return self.hijos
+    
+    def get_padre(self):
+        return self.padre
+    
+    def set_padre(self, padre):
+        self.padre = padre
+    
+    def set_datos(self, datos):
+        self.datos = datos
+        
+    def get_datos(self):
+        return self.datos  
+        
+    def set_coste(self, coste):
+        self.coste = coste
+        
+    def get_coste(self):
+        return self.coste
+        
+    def igual(self, nodo):
+        if self.get_datos() == nodo.get_datos():
+            return True
+        else:
+            return False
+        
+    
