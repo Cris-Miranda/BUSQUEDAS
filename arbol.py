@@ -38,5 +38,13 @@ class Nodo:
             return True
         else:
             return False
-        
+def en_lista(self, lista_nodos):
+        en_la_lista=False
+        for n in lista_nodos:
+            if self.igual(n):
+                en_la_lista=True
+        return en_la_lista
+    
+    def __str__(self):
+        return str(self.get_datos())  
     
